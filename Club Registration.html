@@ -1,0 +1,42 @@
+{% extends 'Common Page.html' %}
+{% block body %}
+<div class="form-body form-body-info">
+        <form data-toggle="validator" method="post">
+            {% csrf_token %}
+            <div class="form-group valid-form">
+                <input type="text" class="form-control" id="inputName" name="cname" placeholder="Club Name" required="">
+                
+            </div>
+
+            
+            <input type="text" class="form-control" id="inputName" name="district" placeholder="District" required="">
+            <input type="text" class="form-control" id="inputName" name="location" placeholder="Location" required="">
+            <div class="form-group">
+            <input type="text" pattern="[0-9]{10}" class="form-control" id="inputName" name="mobile" placeholder="Mobile" required="">
+
+            </div>
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" name="Email" placeholder="Email" data-error="That email address is invalid" required="">
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            </div>
+            
+            <input type="text" class="form-control" id="inputName" name="regno" placeholder="Registration No" required="">
+            <div class="form-group">
+              <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="Password" placeholder="Password" required="">
+
+            </div>
+            
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="terms" data-error="Before you wreck yourself" required="">
+                        I have read and accept terms of use.
+                    </label>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary disabled">Submit</button>
+            </div>
+        </form>
+        {% endblock %}

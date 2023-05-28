@@ -1,0 +1,28 @@
+{% extends 'Customer Page.html' %}
+{% block body %}
+<form method="POST">
+    <style>
+.box{
+  box-shadow: 4px 4px 8px orange;
+}
+    </style>
+    {% csrf_token %}
+    <marquee>
+        <div class="box" >
+            {% for d in data %}
+              <div><b>{{d.6}}</b> </div> 
+                <div style='padding-left:5px'>
+                    {{d.1}}
+                </div>
+                <div  style='padding-left:5px;'>
+                   <i>{{d.2}}</i>
+    <hr>
+                </div>
+                {% endfor %}
+
+            </div>
+    
+        </marquee>
+       
+</form>
+{% endblock %}

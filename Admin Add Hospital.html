@@ -1,0 +1,64 @@
+{% extends 'Admin Page.html' %}
+{% block body %}
+
+<form method="POST">
+		{% csrf_token %}		
+        <table align="center">
+            <tr>
+                <td><label >Hospital Name</label></td>
+                <td><input type="text" required="" name="hname" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Address</label></td>
+                <td><input type="text" required="" name="address" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>District</label></td>
+                <td><input type="text" required="" name="district" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Location</label></td>
+                <td><input type="text" required="" name="location" class="textbox"></td>
+            </tr>
+            
+            <tr>
+                <td><label>Phone</label></td>
+                <td><input type="text" required="" name="phone" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="text" required="" name="email" class="textbox"></td>
+            </tr>
+            
+            <tr>
+                <td><input type="submit" value="Add Now" name="ADD" class="but"/></td>
+            </tr>
+        </table>
+        {% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+        <br/>
+        <br/>
+        <table class="customers">
+            <tr>
+                    <th>Hospital ID</th>
+                    <th>Name</th>
+                    <th>District</th>
+                    <th>Phone</th>
+                    <th></th>
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{d.0}}</td>
+                <td>{{d.1}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.5}}</td>
+                <td><a href="/AdminRemoveHospital/?id={{d.0}}">Remove</a></td>
+            </tr>
+
+            {% endfor %}
+            </table>  	
+        </form>
+        {% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'Customer Page.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %} 
+   <table align="center">
+    <tr>
+        <td><label>Pickup  Date</label></td>
+        <td><input type="date" name="pdate" value="{{pd}}" class="textbox" id="date1"></td>
+    </tr>
+    <tr>
+        <td><label>Return  Date</label></td>
+        <td><input type="date" name="rdate" value="{{rd}}" class="textbox" id="date2"></td>
+    </tr>
+    <tr>
+        <td><label>Total  Days</label></td>
+        <td><input type="text" name="tdate" id="n" value="{{td}}" class="textbox" readonly></td>
+    </tr>
+    <tr>
+        <td><label>Rent Type</label></td>
+        <td><input type="radio" name="type" value="Single">Single<input type="radio" name="type" value="Multiple">Multiple</td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Get Amount" name="Add" class="but"/></td>
+    </tr>
+    <tr>
+        <td><label>Total  Amount</label></td>
+        <td><input type="text" name="tm" value="{{total_amount}}" class="textbox" readonly></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Book Now" name="sub" class="but"/></td>
+        </tr>
+</table>
+
+</form>
+
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+    $(function() {
+  $('#date1').change(updateDays);
+  $('#date2').change(updateDays);
+
+  function updateDays() {
+    var date1 = new Date($('#date1').val());
+    var date2 = new Date($('#date2').val());
+    var timeDiff = date2.getTime() - date1.getTime();
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    $('#n').val(diffDays);
+  }
+});
+
+
+                
+
+</script>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

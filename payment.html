@@ -1,0 +1,51 @@
+<form method="POST" >
+    {% csrf_token %}
+
+
+<table align="center" cellpadding="10">
+    <h1 align="center" cellpading="10"></h1>
+    
+    <div>
+          <tr>
+            <td> Mode Of Payment </td>
+                         <td>  <input type="text" name="payment" class="textbox"></td>
+                         </tr>
+                        </div>
+                        <div>
+                            <tr>
+<td> Date </td>
+<td>  <input type="text" name="date" class="textbox"></td>
+</tr>
+</div>
+<div>
+    <tr>
+<td> Amount </td>
+<td>  <input type="text" name="amount" class="textbox"></td>
+</tr>
+</div>
+<div>
+    <tr>
+<td> UPI Id </td>
+<td>  <input type="text" name="id" class="textbox"></td>
+</tr>
+</div>
+<div>
+<tr>
+<td>  Status</td>
+<td> <input type="text" name="status" class="textbox"></td>
+</tr>
+</div>
+
+  
+   <div>
+        <tr>
+
+<td>  
+    
+    <input type="submit" name="submit" value="submit" class="but">   </td>
+
+    
+</tr>
+        </div>
+</table>
+</form>

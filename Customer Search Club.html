@@ -1,0 +1,85 @@
+{% extends 'Customer Page.html' %}
+{% block body %}
+<form method="POST">
+{% csrf_token %}
+<table>
+    <tr>
+        
+    <td>
+            <select name="dist" class="textbox" style="color: deeppink;" id="sel">
+                    <option>---Select District---</option>
+                    <option>Trivandrum</option>
+                    <option>Kollam</option>
+                    <option>Pathanamthitta</option>
+                    <option>Alappuzha</option>
+                    <option>Kottayam</option>
+                    <option>Idukki</option>
+                    <option>Ernakulam</option>
+                    <option>Thrissur</option>
+                    <option>Palakkadu</option>
+                    <option>Malappuram</option>
+                    <option>Kozhikkode</option>
+                    <option>Wayanadu</option>
+                    <option>Kannur</option>
+                    <option>Kasargode</option>
+                </select>
+            </td>
+    </tr>
+    
+</table>
+    <br/>
+    <br/>
+<table class="customers" >
+	<tr>		
+        <th><b>Club ID</b></th>
+        <th><b>Name</b></th>
+        <th><b>Location</b></th>
+        <th><b>Mobile</b></th>
+        <th><b>Registration No</b></th>
+    </tr>
+    <tbody id="MyDiv">
+            
+            
+    </tbody>
+        </table>
+</form>
+
+<script src="../static/Login/js/jquery.min.js"></script>
+						<script>
+							
+    					$('#sel').change(function()
+    					{
+							debugger;
+        					var first = $('#sel').val();
+        					
+        					var urls='/subcat/?dataid=' + first ;
+                            $.ajax({  
+                                url: urls,
+                                success: function(data){
+                                    debugger;
+            					    $('#MyDiv1').html(data);
+                                    $('tbody[id=MyDiv]').empty()
+                                    $.each(data, function(index, text){        
+                                        $('tbody[id=MyDiv]  ').append(
+                                        $('<tr></tr>').append(
+                                            
+                                        $('<td></td>').html(text[0]),
+                                        $('<td></td>').html(text[1]),
+                                        $('<td></td>').html(text[3]),
+                                        $('<td></td>').html(text[4]),
+                                        $('<td></td>').html(text[6]),
+                                        $('<td></td>').html('<a href="/CustomerSearchClub/?id='+text[0]+'">Request To Join</a>'),
+                                        
+                                        )
+                                        );                       
+                                    });                        
+                                }                       
+                            })
+                        })
+                        </script>
+                        {% if msg %}
+                        <script>
+                            alert("{{msg}}")
+                        </script>
+                        {% endif %}
+{% endblock %}

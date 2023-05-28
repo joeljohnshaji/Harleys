@@ -1,0 +1,22 @@
+{% extends 'Customer Page.html' %}
+{% block body %}
+<form action="#" method="post" class="banner_form">
+                    
+    {% csrf_token %}
+<table align="center">
+{% for d in data %}
+<tr>  <td>USER ID</td><td style="color: black;">{{d.0}}</td> </tr> 
+<tr>  <td >NAME</td><td style="color: rgb(255, 255, 255);"><input type="text" class="textbox" name="name" readonly="true" pattern="[a-zA-Z\s]{1,32}" required="" value="{{d.1}}"></td></tr>
+<tr>  <td >ADDRESS</td><td style="color: white;"><input type="text" class="textbox" name="Address" pattern="[a-zA-Z0-9\s]{1,200}" required="" value="{{d.2}}"></td></tr>
+<tr>  <td >GENDER</td><td style="color: white;"><input type="text" class="textbox" name="Gender" readonly="true" value="{{d.4}}"></td> </tr> 
+<tr>  <td >PHONE NUMBER</td><td style="color: white;"><input type="text" class="textbox" name="Phn"  pattern="[6-9]{1}[0-9]{9}" required="" value="{{d.9}}"></td> </tr>   
+<tr>  <td >EMAIL ID</td><td style="color: white;"><input type="text" class="textbox" name="Email" readonly="true" required="" value="{{d.8}}"></td> </tr> 
+
+
+<tr>
+</tr>
+
+{% endfor %}
+</table>
+</form>
+{% endblock %}

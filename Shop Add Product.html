@@ -1,0 +1,68 @@
+{% extends 'Shop Page.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %} 
+   <table align="center">
+    <tr>
+    <td>
+        <label>Product  Name</label></td>
+        <td><input type="text" required="" name="product_title" class="textbox"></td>
+     </tr>
+     <tr>
+    <td>
+        <label>Category Name</label></td>
+        <td>
+        <select name="cat_title" value=" " class="textbox" style="color: deeppink;">
+            <option>---Select Category---</option>
+                {%for c in cat %}
+            <option value="{{c.0}}">{{c.1}}</option>
+                {% endfor %}
+        </select>
+   </td>
+        </tr>
+    <tr>
+    <td>
+        <label>Brand Name</label></td>
+        <td><select name="brand_title" value=" " class="textbox" style="color: deeppink;">
+                <option>----Select Brand----</option>
+                    {%for c in subcat %}
+                <option value="{{c.0}}">{{c.1}}</option>
+                    {% endfor %}
+            </select>
+        </td>
+    </tr>
+    <tr>
+    <td>
+        <label>Price</label></td>
+        <td><input type="text" name="price" pattern="[0-9]+" class="textbox"></td>
+     </tr>
+     <tr>
+        <td><label>Quantity</label></td>
+        <td><input type="text" name="qty" class="textbox"></td>
+     </tr>
+    <tr>
+        <td><label>Image</label></td>
+        <td><input type="file" name="file" class="textbox"></td>
+    </tr>
+    
+    <tr>
+        <td><label>Description</label></td>
+        <td><input type="text" name="des" class="textbox"></td>
+     </tr>
+     <tr>
+         <td><label>Key Word</label></td>
+        <td><input type="text" name="key" class="textbox"></td>
+     </td>
+</tr>
+<tr>
+<td>
+    <input type="submit" value="Add" name="Add" class="but"/></td></tr>
+</table>
+
+</form>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

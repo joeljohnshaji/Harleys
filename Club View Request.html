@@ -1,0 +1,24 @@
+{% extends 'Club Page.html' %}
+{% block body %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="row" align="center">				
+        <div class="col-md-2" style="border-style: ridge;background-color:#0273dd;color: white;"><b>Customer</b></div>
+        <div class="col-md-2" style="border-style: ridge;background-color:#0273dd;color: white;"><b>District</b></div>
+        <div class="col-md-3" style="border-style: ridge;background-color:#0273dd;color: white;"><b>Email</b></div>
+        <div class="col-md-2" style="border-style: ridge;background-color:#0273dd;color: white;"><b>Mobile</b></div>
+        <div class="col-md-2" style="border-style: ridge;background-color:#0273dd;color: white;"><b></b></div>
+        <div class="col-md-2" style="border-style: ridge;background-color:#0273dd;color: white;"><b></b></div>
+    </div>
+    {% for d in data %}
+    <div class='row' >				
+        <div class='col-md-2' style='border-style: ridge;'>{{d.6}}</div>
+        <div class='col-md-2' style='border-style: ridge;'>{{d.11}}</div>
+        <div class='col-md-3' style='border-style: ridge;'>{{d.13}}</div>
+        <div class='col-md-2' style='border-style: ridge;'>{{d.14}}</div>
+        <div class='col-md-2' style='border-style: ridge;'><a href="/ClubViewRequest/?id={{d.0}}&st=Accept">Accept</a></div>
+        <div class='col-md-2' style='border-style: ridge;'><a href='/ClubViewRequest/?id={{d.0}}&st=Reject'>Reject</a></div>
+    </div>
+</form>
+{% endfor %}
+{% endblock %}
